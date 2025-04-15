@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://mtalikka.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_d826e05a767c4ef7a8d23c8be4bd60f5 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_350abcd663ac4c2081a7c2c147af0116 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_71d8618d70ab43e298ae19e676e1fa65 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_4c55ab8c61354c61a705e37a3e024eee }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mtalikka.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d826e05a767c4ef7a8d23c8be4bd60f5 }}/webapp:${{ github.sha }}
+        tags: mtalikka.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_71d8618d70ab43e298ae19e676e1fa65 }}/webapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'webappmtalikka1104'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_57082215f9ac4613bffe2eb163d5c25c }}
-        images: 'mtalikka.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_d826e05a767c4ef7a8d23c8be4bd60f5 }}/webapp:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f8134fa795d24bf580d643bd94692f05 }}
+        images: 'mtalikka.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_71d8618d70ab43e298ae19e676e1fa65 }}/webapp:${{ github.sha }}'
